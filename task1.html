@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Input and Calculation</title>
+<script>
+  function printUserData() {
+    var name = document.getElementById("name").value;
+    var rollNumber = document.getElementById("rollNumber").value;
+    var output = document.getElementById("output");
+
+    output.innerHTML = "Name: " + name + "<br>Roll Number: " + rollNumber;
+  }
+
+  function calculate() {
+    var number1 = parseFloat(document.getElementById("number1").value);
+    var number2 = parseFloat(document.getElementById("number2").value);
+    var operation = document.getElementById("operation").value;
+    var result = 0;
+
+    switch(operation) {
+      case '+':
+        result = number1 + number2;
+        break;
+      case '-':
+        result = number1 - number2;
+        break;
+      case '*':
+        result = number1 * number2;
+        break;
+      case '/':
+        if (number2 !== 0) {
+          result = number1 / number2;
+        } else {
+          result = "Cannot divide by zero";
+        }
+        break;
+      default:
+        result = "Invalid operation";
+    }
+
+    document.getElementById("calculationResult").innerHTML = "Result: " + result;
+  }
+</script>
+</head>
+<body>
+  <h2>Enter User Data</h2>
+  <label for="name">Name:</label>
+  <input type="text" id="name" placeholder="Enter your name"><br>
+  <label for="rollNumber">Roll Number:</label>
+  <input type="text" id="rollNumber" placeholder="Enter your roll number"><br>
+  <button onclick="printUserData()">Print User Data</button>
+  <div id="output"></div>
+
+  <h2>Perform Calculation</h2>
+  <label for="number1">Number 1:</label>
+  <input type="number" id="number1"><br>
+  <label for="number2">Number 2:</label>
+  <input type="number" id="number2"><br>
+  <label for="operation">Operation:</label>
+  <select id="operation">
+    <option value="+">Addition</option>
+    <option value="-">Subtraction</option>
+    <option value="*">Multiplication</option>
+    <option value="/">Division</option>
+  </select><br>
+  <button onclick="calculate()">Calculate</button>
+  <div id="calculationResult"></div>
+</body>
+</html>
